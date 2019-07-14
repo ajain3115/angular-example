@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event-service.service';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 @Component({
   selector: 'app-event-booking',
   templateUrl: './event-booking.component.html',
@@ -13,16 +20,7 @@ export class EventBookingComponent implements OnInit {
   public bookingForm:FormGroup;
   constructor(private eventService:EventService, private router:Router,
     private fb: FormBuilder) {
-      this.bookingForm = fb.group({
-        'userName': ['', Validators.compose([Validators.required])],
-        'email': ['', Validators.compose([Validators.required])],
-        'phone': ['', Validators.compose([Validators.required])],
-        'num_selected_seats': ['', Validators.compose([Validators.required])],
-        'otherUsers': fb.array([])
-    });
-    this.bookingForm.get('num_selected_seats').valueChanges.subscribe(res=>{
-      this.addMoreUser(res)
-    })
+      
   }
 
   ngOnInit() {
@@ -30,7 +28,22 @@ export class EventBookingComponent implements OnInit {
     this.selectedEvent = this.eventService.selectedEvent;
     if(!this.selectedEvent){
       this.router.navigate(['events-list'])
+    }else{
+      this.initForm();
     }
+  }
+
+  initForm(){
+    this.bookingForm = this.fb.group({
+      'userName': ['', [Validators.required,Validators.pattern(/^[a-zA-Z ]*$/)]],
+      'email': ['', [Validators.required,Validators.email]],
+      'phone': ['', [Validators.minLength(10),Validators.maxLength(10)]],
+      'num_selected_seats': ['', [Validators.required,Validators.max(this.selectedEvent.seats_available)]],
+      'otherUsers': this.fb.array([])
+  });
+  this.bookingForm.get('num_selected_seats').valueChanges.subscribe(res=>{
+    this.addMoreUser(res)
+  })
   }
 
   addMoreUser(count) {

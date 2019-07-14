@@ -2,21 +2,64 @@
     <h2>{{selectedEvent.name}}</h2>
     <p>Number of available seats:- {{selectedEvent.seats_available}}</p>
     <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(bookingForm.value)">
-        <input type="text" formControlName="userName">
-        <input type="text" formControlName="email">
-        <input type="text" formControlName="phone">
-        <select formControlName="num_selected_seats">
-            <option value="" disabled>-Sealect no. Of seates-</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-        </select>
-        <div *ngFor="let item of bookingForm.controls.otherUsers.controls ">
-            <input type="text" [formControl]="item">
+        <mat-form-field class="material-full-width">
+            <input matInput placeholder="Name" formControlName="userName" [errorStateMatcher]="matcher">
+            <mat-error
+                *ngIf="bookingForm.controls.userName.hasError('pattern') && !bookingForm.controls.userName.hasError('required')">
+                Only letters and spaces are allowed
+            </mat-error>
+            <mat-error *ngIf="bookingForm.controls.userName.hasError('required')">
+                Please enter your name
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="material-full-width">
+            <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="matcher">
+            <mat-error
+                *ngIf="bookingForm.controls.email.hasError('email') && !bookingForm.controls.email.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="bookingForm.controls.email.hasError('required')">
+                Please enter your email
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="material-full-width">
+            <input matInput placeholder="Phone" formControlName="phone" [errorStateMatcher]="matcher">
+            <mat-error
+                *ngIf="bookingForm.controls.phone.hasError('minlength') || bookingForm.controls.phone.hasError('maxlength')">
+                Please enter 10 digit phone number
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="material-full-width">
+            <mat-label>No. of Seats</mat-label>
+            <mat-select formControlName="num_selected_seats">
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+                <mat-option value="6">6</mat-option>
+            </mat-select>
+            <mat-error
+                *ngIf="bookingForm.controls.num_selected_seats.hasError('max') && !bookingForm.controls.num_selected_seats.hasError('required')">
+                Number of seats selected is more than available seats
+            </mat-error>
+            <mat-error *ngIf="bookingForm.controls.num_selected_seats.hasError('required')">
+                Please enter number of seats.
+            </mat-error>
+        </mat-form-field>
+        <div *ngFor="let item of bookingForm.controls.otherUsers.controls;index as i">
+            <mat-form-field class="material-full-width">
+                <input matInput placeholder="Name of Attendee{{i+2}}" [formControl]="item"
+                    [errorStateMatcher]="matcher">
+                <mat-error *ngIf="item.hasError('required')">
+                    Name of Attendee{{i+2}} is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
         </div>
-        <button type="submit">submit</button>
+        <div class="d-flex justify-content-center">
+            <button class="mr-1" type="button" mat-stroked-button color="primary" [routerLink]="['/events-list']"
+                routerLinkActive="router-link-active">Cancel</button>
+            <button class="ml-1" type="submit" mat-raised-button color="primary">Submit</button>
+        </div>
     </form>
 </div>

@@ -1,12 +1,15 @@
 
-<div>
-  <input type="text" [formControl]="searchControl">
+<div class="search-container">
+    <mat-form-field class="material-full-width">
+        <input matInput placeholder="Search" [formControl]="searchControl">
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
 </div>
 
 <div class="row">
   <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let event of allEvents;index as i">
-    <mat-card class="">
-      <img mat-card-image [src]="event.image" alt="Photo of a Shiba Inu">
+    <mat-card class="mat-card">
+      <img class="event-image" mat-card-image [src]="event.image" alt="Photo of a Shiba Inu">
       <mat-card-content>
         <p>{{event.name}}</p>
         <p>{{event.date_of_event | date:'short'}}</p>
