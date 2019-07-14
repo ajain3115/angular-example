@@ -1,0 +1,23 @@
+
+<div>
+  <input type="text" [formControl]="searchControl">
+</div>
+
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let event of allEvents;index as i">
+    <mat-card class="">
+      <img mat-card-image [src]="event.image" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>{{event.name}}</p>
+        <p>{{event.date_of_event | date:'short'}}</p>
+        <p>{{event.seats_available}}</p>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <button *ngIf="event.seats_available>0;else soldOut" mat-stroked-button color="primary" (click)="bookNow(event,i)">Book Now</button>
+        <ng-template #soldOut>
+            <button mat-stroked-button disabled color="primary">Sold Out</button>
+        </ng-template>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

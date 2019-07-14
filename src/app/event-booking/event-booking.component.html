@@ -1,0 +1,22 @@
+<div class="booking-container" *ngIf="selectedEvent">
+    <h2>{{selectedEvent.name}}</h2>
+    <p>Number of available seats:- {{selectedEvent.seats_available}}</p>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit(bookingForm.value)">
+        <input type="text" formControlName="userName">
+        <input type="text" formControlName="email">
+        <input type="text" formControlName="phone">
+        <select formControlName="num_selected_seats">
+            <option value="" disabled>-Sealect no. Of seates-</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+        </select>
+        <div *ngFor="let item of bookingForm.controls.otherUsers.controls ">
+            <input type="text" [formControl]="item">
+        </div>
+        <button type="submit">submit</button>
+    </form>
+</div>

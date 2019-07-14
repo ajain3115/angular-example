@@ -1,0 +1,74 @@
+{
+    "events":[
+        {
+            "event_id":1,
+            "name":"Comedy Night",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":34
+        },
+        {
+            "event_id":2,
+            "name":"friends",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":0
+        },
+        {
+            "event_id":3,
+            "name":"Brooklen nine nine",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":5
+        },
+        {
+            "event_id":4,
+            "name":"Comedy Central",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":45
+        },
+        {
+            "event_id":5,
+            "name":"Central Crime Meeting",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":4
+        },
+        {
+            "event_id":6,
+            "name":"sjhv",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":3
+        },
+        {
+            "event_id":7,
+            "name":"jhvgfd",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":34
+        },
+        {
+            "event_id":8,
+            "name":"jhvgfd",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":34
+        },
+        {
+            "event_id":9,
+            "name":"jhvgfd",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":0
+        },
+        {
+            "event_id":10,
+            "name":"jhvgfd",
+            "image":"https://in.bmscdn.com/Events/moviecard/sunburn-goa-2019-et00104928-2019-7-1-t-12-0-5.jpg",
+            "date_of_event":"2019-07-13T01:04:12.993Z",
+            "seats_available":0
+        }
+    ]
+}
