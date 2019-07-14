@@ -52,7 +52,7 @@
                 <input matInput placeholder="Name of Attendee{{i+2}}" [formControl]="item"
                     [errorStateMatcher]="matcher">
                 <mat-error *ngIf="item.hasError('required')">
-                    Name of Attendee{{i+2}} is <strong>required</strong>
+                    Please enter the name of Attendee {{i+2}}
                 </mat-error>
             </mat-form-field>
         </div>
